@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onc.mapper.BomsMapper" >
+  <resultMap id="BaseResultMap" type="com.onc.pojo.Boms" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="boms_id" property="bomsId" jdbcType="INTEGER" />
+    <result column="PartNo" property="partno" jdbcType="VARCHAR" />
+    <result column="Rev" property="rev" jdbcType="VARCHAR" />
+    <result column="BOMPartNo" property="bompartno" jdbcType="VARCHAR" />
+    <result column="BOMRev" property="bomrev" jdbcType="VARCHAR" />
+    <result column="Instructions" property="instructions" jdbcType="VARCHAR" />
+    <result column="Qty" property="qty" jdbcType="INTEGER" />
+    <result column="findNo" property="findno" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

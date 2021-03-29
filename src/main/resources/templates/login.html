@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>ONC login</title>
+  <link rel="stylesheet" type="text/css" th:href="@{css/login.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{css/util.css}">
+  <script type="text/javascript"></script>
+</head>
+<body>
+<div id="login_frame">
+  <form method="post" action="/login">
+    <h1 align="center" style=color:gray ; font-size:25px">ONC Database System </h1>
+    <p><label class="label_input">Username</label><input type="text" name="username" id="username" class="text_field"></p>
+    <p><label class="label_input">Password</label><input type="password" id="password" name="password" class="text_field"></p>
+    <div id="login_control">
+      <input type="submit" id="btn_login" value="教师登录" name="btn_login" onclick="pass()">
+    </div>
+  </form>
+</div>
+<script type="text/javascript">
+    function pass(){
+      $.ajax({
+        type: "post",
+        async: false,
+        url: 'login',
+        data: JSON.stringify({
+          userId: $("#username").val(),
+          passwordId: $("#password").val(),
+        }),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success:function(data) {
+          console.log(JSON.stringify(data));
+
+          if (data.status === 200) {
+            //jump to next PAG
+            console.log("correct")
+            //SAVE GLOBAL USER OBJECT TO LOCAL STORAGE
+            window.location.href = 'mainpage.html';
+          } else {
+            alert("login fail");
+          }
+
+        }
+      })
+
+
+    }
+
+
+</script>
+</body>
+</html>

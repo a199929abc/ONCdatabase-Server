@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onc.mapper.PartsMapper" >
+  <resultMap id="BaseResultMap" type="com.onc.pojo.Parts" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="parts_id" property="partsId" jdbcType="INTEGER" />
+    <result column="PartNo" property="partno" jdbcType="VARCHAR" />
+    <result column="Rev" property="rev" jdbcType="VARCHAR" />
+    <result column="RevCreated" property="revcreated" jdbcType="TIMESTAMP" />
+    <result column="Redline" property="redline" jdbcType="VARCHAR" />
+    <result column="Status" property="status" jdbcType="VARCHAR" />
+    <result column="Description" property="description" jdbcType="VARCHAR" />
+    <result column="Hold" property="hold" jdbcType="VARCHAR" />
+    <result column="Reserved" property="reserved" jdbcType="VARCHAR" />
+    <result column="BOM" property="bom" jdbcType="VARCHAR" />
+    <result column="Reference" property="reference" jdbcType="VARCHAR" />
+    <result column="Draft" property="draft" jdbcType="VARCHAR" />
+    <result column="Option" property="option" jdbcType="VARCHAR" />
+    <result column="Schematics" property="schematics" jdbcType="VARCHAR" />
+    <result column="Proposal" property="proposal" jdbcType="VARCHAR" />
+    <result column="StandardStock" property="standardstock" jdbcType="VARCHAR" />
+    <result column="Size" property="size" jdbcType="VARCHAR" />
+    <result column="CheckedBy" property="checkedby" jdbcType="VARCHAR" />
+    <result column="CBEmpNo" property="cbempno" jdbcType="VARCHAR" />
+    <result column="CheckedTS" property="checkedts" jdbcType="TIMESTAMP" />
+    <result column="ApprovedBy" property="approvedby" jdbcType="VARCHAR" />
+    <result column="ABEmpNo" property="abempno" jdbcType="VARCHAR" />
+    <result column="ApprovedTS" property="approvedts" jdbcType="TIMESTAMP" />
+    <result column="DateOfObsolescence" property="dateofobsolescence" jdbcType="VARCHAR" />
+    <result column="SOC" property="soc" jdbcType="VARCHAR" />
+    <result column="Navsea" property="navsea" jdbcType="VARCHAR" />
+    <result column="MCD" property="mcd" jdbcType="VARCHAR" />
+    <result column="ComponentNo" property="componentno" jdbcType="VARCHAR" />
+    <result column="CageCode" property="cagecode" jdbcType="VARCHAR" />
+    <result column="MfgPartNo" property="mfgpartno" jdbcType="VARCHAR" />
+    <result column="ItemGroup" property="itemgroup" jdbcType="VARCHAR" />
+    <result column="ItemType" property="itemtype" jdbcType="VARCHAR" />
+    <result column="Units" property="units" jdbcType="VARCHAR" />
+    <result column="Prototype" property="prototype" jdbcType="VARCHAR" />
+    <result column="SendToBaan" property="sendtobaan" jdbcType="VARCHAR" />
+    <result column="BaanStatus" property="baanstatus" jdbcType="TIMESTAMP" />
+    <result column="Hyperlink" property="hyperlink" jdbcType="VARCHAR" />
+    <result column="ClientApproved" property="clientapproved" jdbcType="VARCHAR" />
+    <result column="ApprovalReference" property="approvalreference" jdbcType="VARCHAR" />
+    <result column="CACategory" property="cacategory" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>
