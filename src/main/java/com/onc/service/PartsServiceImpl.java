@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.entity.Example.Criteria;
 
+import javax.servlet.http.Part;
 import java.util.List;
 
 @Service
@@ -28,29 +29,59 @@ public class PartsServiceImpl implements PartService{
 
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
-    public boolean queryPartIsExist(String partNum,String status) {
+    public boolean queryPartIsExist(Parts part) {
     Example partExample = new Example(Parts.class);
     Criteria criteria = partExample.createCriteria();
-    criteria.andEqualTo("partno", partNum);
-    criteria.andEqualTo("status",status);
-    Parts result = partMapper.selectOneByExample(partExample);
-    return result != null ? true : false;
+    criteria.andEqualTo("partno", part.getPartno());
+    criteria.andEqualTo("status",part.getStatus());
+
+    List<Parts> partResult = partMapper.selectByExample(partExample);
+    return partResult.size() != 0 ? true : false;
     }
 
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
-    public List<Parts> queryPartList(String partNum) {
-    return  null;
+    public List<Parts> queryPartList(Parts part) {
+    Example partExample = new Example(Parts.class);
+    Criteria criteria = partExample.createCriteria();
+    criteria.andEqualTo("partno",part.getPartno());
+    criteria.andEqualTo("status",part.getStatus());
+    criteria.andEqualTo("rev",part.getRev());
+    List <Parts> partResult = partMapper.selectByExample(partExample);
+    System.out.println("There are "+partResult.size() +"similar result in oncdatabase");
+    return partResult;
     }
 
     @Override
-    public Parts queryGetPartData(String partNum, String status) {
+    public boolean queryIsRevDml(Parts part) {
         Example partExample = new Example(Parts.class);
         Criteria criteria = partExample.createCriteria();
-        criteria.andEqualTo("partno", partNum);
-        criteria.andEqualTo("status",status);
-        Parts result = partMapper.selectOneByExample(partExample);
-        return result;
+        criteria.andEqualTo("partno",part.getPartno());
+        criteria.andEqualTo("status",part.getStatus());
+        criteria.andEqualTo("rev",part.getRev());
+        List <Parts> partResult = partMapper.selectByExample(partExample);
+        System.out.println("There are "+ partResult.size()+" result exist in database");
+        return partResult.size() != 1 ? false : true;
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public Parts queryGetPartData(Parts part) {
+        Example partExample = new Example(Parts.class);
+        Criteria criteria = partExample.createCriteria();
+        if(part.getRev()!=null){
+            criteria.andEqualTo("partno", part.getPartno());
+            criteria.andEqualTo("status",part.getStatus());
+            criteria.andEqualTo("rev",part.getRev());
+            Parts result = partMapper.selectOneByExample(partExample);
+            return result;
+        }else {
+            criteria.andEqualTo("partno", part.getPartno());
+            criteria.andEqualTo("status",part.getStatus());
+            Parts result = partMapper.selectOneByExample(partExample);
+            return result;
+        }
+
     }
 
     @Transactional(propagation = Propagation.SUPPORTS)
@@ -75,9 +106,6 @@ public class PartsServiceImpl implements PartService{
     criteria.andEqualTo("partno",partId);
     List<Boms> bomsResult = BomMapper.selectByExample(bomExample);
     System.out.println("list size is : "+ bomsResult.size());
-        for(int i=0;i<bomsResult.size();i++){
-            System.out.println("BOM: " +  bomsResult.get(i).getBompartno());
-        }
         return bomsResult;
     }
 

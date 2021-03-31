@@ -4,6 +4,7 @@ import com.onc.pojo.Boms;
 import com.onc.pojo.Manufacturers;
 import com.onc.pojo.Parts;
 import com.onc.pojo.vo.PartsVO;
+import com.onc.pojo.vo.RevVO;
 import com.onc.service.PartService;
 import com.onc.utils.JSONResult;
 import org.springframework.beans.BeanUtils;
@@ -28,31 +29,43 @@ public class searchController {
         String PartStatus = part.getStatus();
         System.out.println("Search part num : "+PartNo);
         System.out.println("Search part status : " +PartStatus);
+        System.out.println(part.getRev());
         PartsVO partVO = new PartsVO();
-        boolean partIsExist = partService.queryPartIsExist(PartNo,PartStatus);
+        boolean partIsExist = partService.queryPartIsExist(part);
 
         if(partIsExist){
-            System.out.println("Part exist in database.");
-            Parts result = partService.queryGetPartData(PartNo,PartStatus);
-            if(result.getCagecode()!=null){
-                System.out.println("This part have a cage code.");
-                String mfgName = partService.queryGetMfgName(result);
-                partVO.setMfgName(mfgName);
+            if(part.getRev().equals("")){
+                part.setRev(null);
             }
-            if (partService.queryBomsIsExist(part)){
-                System.out.println("BOM exist ");
-                List<Boms> bomResult=partService.queryBoms(part);
-                partVO.setJsonbom(bomResult);
 
+            System.out.println("Part exist in database.");
+
+            if(partService.queryIsRevDml(part)){
+                Parts result = partService.queryGetPartData(part);
+                System.out.println("part is unique");
+
+                if(result.getCagecode()!=null){
+                    System.out.println("This part have a cage code.");
+                    String mfgName = partService.queryGetMfgName(result);
+                    partVO.setMfgName(mfgName);
+                }
+
+                if (partService.queryBomsIsExist(part)){
+                    System.out.println("BOM exist ");
+                    List<Boms> bomResult=partService.queryBoms(part);
+                    partVO.setJsonbom(bomResult);
+
+                }else{
+                    System.out.println("BOM not exist");
+                }
+                BeanUtils.copyProperties(result,partVO);
+
+                return JSONResult.ok(partVO);
 
             }else{
-                System.out.println("BOM not exist");
+                List<Parts> revResult = partService.queryPartList(part);
+                return JSONResult.errorMapRev(revResult);
             }
-            partService.queryBoms(part);
-            BeanUtils.copyProperties(result,partVO);
-
-            return JSONResult.ok(partVO);
-
         }else{
             System.out.println("Part doesn't exit.");
             return JSONResult.errorMsg("Part is not exist...");

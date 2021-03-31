@@ -43,6 +43,9 @@ public class JSONResult {
     public static JSONResult errorMap(Object data) {
         return new JSONResult(501, "error", data);
     }
+    public static JSONResult errorMapRev(Object data) {
+        return new JSONResult(505, "Part is not unique. Please specify Revision", data);
+    }
     
     public static JSONResult errorTokenMsg(String msg) {
         return new JSONResult(502, msg, null);

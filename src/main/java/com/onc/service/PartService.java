@@ -9,15 +9,19 @@ import java.util.List;
 
 public interface PartService {
 
-    public boolean queryPartIsExist(String partNum,String status);
+    public boolean queryPartIsExist(Parts part);
 
-    public List<Parts> queryPartList(String partNum);
+    public List<Parts> queryPartList(Parts part);
 
-    public Parts queryGetPartData(String partNum,String status);
+    public boolean queryIsRevDml (Parts part);
+
+    public Parts queryGetPartData(Parts part);
 
     public String queryGetMfgName (Parts part);
 
     public List<Boms> queryBoms (Parts part);
 
-    public boolean queryBomsIsExist(Parts part);
+    public boolean queryBomsIsExist(Parts parts );
+
+
 }
