@@ -1,6 +1,6 @@
 # ONC database-Project Overview
 
- ## ONC Database System Structure
+# ONC Database System Structure
  ![image](https://github.com/a199929abc/ONCdatabase-Server/blob/main/ONC%20%20database%20System.png)
 From the analysis of two possible approaches, rebuilding the database seems like a more realistic and developer-friendly solution. However, only having the database itself is not enough for users to interact. The entire project can divide into three parts: 
 Rewriting Paradox database to Mysql database and dealing with the specification issues between different schemas.
