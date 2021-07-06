@@ -1,4 +1,4 @@
-# ONCdatabase-Project Overview
+# ONC database-Project Overview
 
  ONC Database System
 From the analysis of two possible approaches, rebuilding the database seems like a more realistic and developer-friendly solution. However, only having the database itself is not enough for users to interact. The entire project can divide into three parts: 
