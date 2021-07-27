@@ -11,7 +11,7 @@
     <result column="BOMPartNo" property="bompartno" jdbcType="VARCHAR" />
     <result column="BOMRev" property="bomrev" jdbcType="VARCHAR" />
     <result column="Instructions" property="instructions" jdbcType="VARCHAR" />
-    <result column="Qty" property="qty" jdbcType="INTEGER" />
+    <result column="Qty" property="qty" jdbcType="VARCHAR" />
     <result column="findNo" property="findno" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

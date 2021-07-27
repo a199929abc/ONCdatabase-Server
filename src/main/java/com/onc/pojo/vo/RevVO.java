@@ -4,7 +4,7 @@ import com.onc.pojo.Parts;
 
 import java.util.List;
 
-public class RevVO {
+public class RevVO {    
     public List<Parts> getRev() {
         return Rev;
     }

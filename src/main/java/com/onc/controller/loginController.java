@@ -27,8 +27,8 @@ public JSONResult login( @RequestBody Users user )throws Exception{
     String username = user.getUsername();
     String password = user.getPassword();
     System.out.println("Loading ....");
-    System.out.println(username);
-    System.out.println(password);
+    //System.out.println(username);
+    //System.out.println(password);
     if(StringUtils.isBlank(username)||StringUtils.isBlank(password)){
         return  JSONResult.errorMsg("username and password does't match");
     }
@@ -38,7 +38,7 @@ public JSONResult login( @RequestBody Users user )throws Exception{
         return JSONResult.ok(result);
     }else{
         System.out.println("login  fail");
-        return JSONResult.errorMsg("Login  fail please retry ");
+        return JSONResult.errorMsg("Login fail please retry ");
     }
 }
 

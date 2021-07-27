@@ -374,8 +374,6 @@ public class PartsVO {
 
         private String navsea;
 
-
-
         private String componentno;
 
         private String cagecode;
@@ -395,14 +393,10 @@ public class PartsVO {
         private Date baanstatus;
 
         private String hyperlink;
-
-
         private String clientapproved;
-
-
         private String approvalreference;
-
         private String cacategory;
+        private String mfgName;
 
         public String getMfgName() {
             return mfgName;
@@ -412,16 +406,16 @@ public class PartsVO {
             this.mfgName = mfgName;
         }
 
-        private String mfgName;
 
-    public List<Boms> getJsonbom() {
-        return jsonbom;
-    }
 
-    public void setJsonbom(List<Boms> jsonbom) {
+        public List<BomsVO> getJsonbom() {
+            return jsonbom;
+        }
+
+        public void setJsonbom(List<BomsVO> jsonbom) {
         this.jsonbom = jsonbom;
-    }
+        }
 
-    private List<Boms> jsonbom;
+        private List<BomsVO> jsonbom;
 
-    }
+        }

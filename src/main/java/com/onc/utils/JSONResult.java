@@ -1,28 +1,26 @@
 package com.onc.utils;
 
 /**
- * @Description: 自定义响应数据结构
- * 				这个类是提供给门户，ios，安卓，微信商城用的
- * 				门户接受此类数据后需要使用本类的方法转换成对于的数据类型格式（类，或者list）
- * 				其他自行处理
- * 				200：表示成功
- * 				500：表示错误，错误信息在msg字段中
- * 				501：bean验证错误，不管多少个错误都以map形式返回
- * 				502：拦截器拦截到用户token出错
- * 				555：异常抛出信息
+ * @Description:Custom response data structure This class is provided to portals, ios, Android, and WeChat malls. After the portal accepts this type of data,
+ * it needs to use the methods of this class to convert it into the
+ * corresponding data type format (class, or list). Other self-processing
+ * 200：success
+ * 500： Indicates an error, the error information is in the msg field
+ * 501：Bean validation errors, no matter how many errors are returned as a map
+ * 502：Interceptor intercepted user token error 555: exception throwing information
  */
 public class JSONResult {
 
-    // 响应业务状态
+    // Response Status
     private Integer status;
 
-    // 响应消息
+    // Response Message
     private String msg;
 
-    // 响应中的数据
+    // Response Data
     private Object data;
     
-    private String ok;	// 不使用
+    private String ok;	// current not in use
 
     public static JSONResult build(Integer status, String msg, Object data) {
         return new JSONResult(status, msg, data);
