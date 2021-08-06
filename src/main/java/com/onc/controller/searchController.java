@@ -31,7 +31,7 @@ public class searchController {
         String PartStatus = part.getStatus();
         PartsVO partVO = new PartsVO();
 
-        //System.out.println("Searching part num : "+PartNo);
+        System.out.println("Searching part num : "+PartNo);
         //System.out.println("Search part status : " +PartStatus);
         //System.out.println(part.getRev());
 

@@ -1,6 +1,4 @@
 package com.onc.controller;
-    
-
 import com.onc.pojo.Parts;
 import com.onc.pojo.Users;
 import com.onc.service.UserService;
@@ -23,7 +21,7 @@ public class loginController {
 
 
     @RequestMapping("/login")
-public JSONResult login( @RequestBody Users user )throws Exception{
+public JSONResult login( @RequestParam Users user )throws Exception{
     String username = user.getUsername();
     String password = user.getPassword();
     System.out.println("Loading ....");
